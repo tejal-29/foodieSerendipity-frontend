@@ -1,0 +1,460 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap");
+
+:root {
+  --foodie-cream: #fff8ef;
+  --foodie-cream-dark: #f6eadb;
+  --foodie-brown: #3a2117;
+  --foodie-brown-light: #674638;
+  --foodie-orange: #c96832;
+  --foodie-orange-dark: #a94e22;
+  --foodie-green: #68765a;
+  --foodie-white: #ffffff;
+  --foodie-text: #49372f;
+  --foodie-muted: #78675e;
+  --foodie-border: rgba(58, 33, 23, 0.12);
+  --foodie-bounce: cubic-bezier(0.34, 1.45, 0.64, 1);
+}
+
+.story-page {
+  background: var(--foodie-cream);
+  color: var(--foodie-text);
+  overflow-x: hidden;
+}
+
+.story-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* =========================================
+   SCROLL ANIMATION STATES
+========================================= */
+
+.scroll-reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition-duration: 0.8s;
+  transition-timing-function: var(--foodie-bounce);
+}
+
+.scroll-reveal.drop-card {
+  transform: translateY(-40px) scale(0.96);
+  transition-delay: calc(var(--delay, 1) * 0.12s);
+}
+
+.scroll-reveal.drop-card.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.scroll-reveal.drop-fade {
+  transform: translateY(-20px);
+  transition: opacity 0.8s ease, transform 0.8s var(--foodie-bounce);
+}
+
+.scroll-reveal.drop-fade.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal.slide-right {
+  transform: translateX(35px);
+  transition: opacity 0.85s ease, transform 0.85s var(--foodie-bounce);
+}
+
+.scroll-reveal.slide-right.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-reveal.pop-scale {
+  transform: scale(0.92) translateY(25px);
+  transition: opacity 0.85s ease, transform 0.85s var(--foodie-bounce);
+}
+
+.scroll-reveal.pop-scale.in-view {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Floating bobbing */
+@keyframes cuteWobble {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(2deg); }
+}
+
+/* =========================
+   HERO
+========================= */
+
+.story-hero {
+  position: relative;
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: 
+    linear-gradient(rgba(58, 33, 23, 0.78), rgba(58, 33, 23, 0.88)),
+    radial-gradient(circle at 50% 50%, var(--foodie-orange-dark), var(--foodie-brown));
+  color: var(--foodie-white);
+  padding: 100px 24px 80px;
+}
+
+.story-hero-content {
+  max-width: 820px;
+}
+
+.story-kicker {
+  display: inline-block;
+  color: #f8c29d;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.story-hero-title {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3rem, 7vw, 5.2rem);
+  line-height: 1.05;
+}
+
+.story-hero-subtitle {
+  margin: 20px auto 0;
+  max-width: 620px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.7;
+}
+
+/* =========================
+   ORIGIN SECTION
+========================= */
+
+.origin-section {
+  padding: 110px 0;
+}
+
+.origin-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 75px;
+  align-items: center;
+}
+
+.origin-polaroid {
+  background: var(--foodie-white);
+  padding: 18px 18px 24px;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(58, 33, 23, 0.09);
+  border: 1px solid var(--foodie-border);
+  transform: rotate(-2deg);
+  transition: transform 0.4s var(--foodie-bounce);
+}
+
+.origin-polaroid:hover {
+  transform: rotate(1deg) scale(1.03);
+}
+
+.polaroid-img-placeholder {
+  min-height: 380px;
+  background: 
+    radial-gradient(circle at top left, rgba(201, 104, 50, 0.2), transparent 45%),
+    var(--foodie-cream-dark);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.polaroid-sticker {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: var(--foodie-orange);
+  color: var(--foodie-white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(201, 104, 50, 0.3);
+}
+
+.polaroid-icon {
+  font-size: 5rem;
+  animation: cuteWobble 4s ease-in-out infinite;
+}
+
+.polaroid-caption {
+  margin: 18px 0 4px;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  color: var(--foodie-brown-light);
+  font-size: 1.15rem;
+}
+
+.origin-text h2 {
+  font-family: "Playfair Display", serif;
+  color: var(--foodie-brown);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  line-height: 1.2;
+  margin: 14px 0 22px;
+}
+
+.origin-text p {
+  color: var(--foodie-muted);
+  font-size: 1.08rem;
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+
+.signature-box {
+  margin-top: 30px;
+  border-top: 2px dashed rgba(201, 104, 50, 0.35);
+  padding-top: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signature-name {
+  font-family: "Playfair Display", serif;
+  font-size: 1.35rem;
+  color: var(--foodie-orange);
+  font-weight: 700;
+}
+
+.signature-role {
+  font-size: 0.85rem;
+  color: var(--foodie-muted);
+  letter-spacing: 0.05em;
+}
+
+/* =========================
+   PILLARS SECTION
+========================= */
+
+.pillars-section {
+  padding: 100px 0;
+  background: var(--foodie-white);
+}
+
+.story-center-heading {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 55px;
+}
+
+.story-center-heading h2 {
+  font-family: "Playfair Display", serif;
+  color: var(--foodie-brown);
+  font-size: clamp(2.3rem, 4.5vw, 3.6rem);
+  margin-top: 10px;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.pillar-card {
+  background: var(--foodie-cream);
+  border: 1px solid var(--foodie-border);
+  padding: 40px 30px;
+  border-radius: 22px;
+  text-align: center;
+  transition: transform 0.35s var(--foodie-bounce), box-shadow 0.35s ease;
+}
+
+.pillar-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 36px rgba(58, 33, 23, 0.08);
+}
+
+.pillar-icon {
+  font-size: 2.8rem;
+  margin-bottom: 16px;
+  display: inline-block;
+  animation: cuteWobble 3.5s ease-in-out infinite;
+}
+
+.pillar-card h3 {
+  font-family: "Playfair Display", serif;
+  color: var(--foodie-brown);
+  font-size: 1.55rem;
+  margin: 0 0 12px;
+}
+
+.pillar-card p {
+  color: var(--foodie-muted);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* =========================
+   TIMELINE SECTION
+========================= */
+
+.timeline-section {
+  padding: 105px 0;
+  background: var(--foodie-brown);
+  color: var(--foodie-white);
+}
+
+.timeline-section .light-heading .section-label {
+  color: #f1a06e;
+}
+
+.timeline-section .light-heading h2 {
+  color: var(--foodie-white);
+}
+
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.timeline-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 34px 28px;
+  transition: transform 0.3s var(--foodie-bounce), background 0.3s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.timeline-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.timeline-year {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  color: #f3a26e;
+  font-weight: 700;
+}
+
+.timeline-icon {
+  font-size: 1.6rem;
+}
+
+.timeline-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--foodie-green);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.timeline-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.35rem;
+  margin: 0 0 10px;
+  color: var(--foodie-white);
+}
+
+.timeline-card p {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* =========================
+   STORY CTA
+========================= */
+
+.story-cta-section {
+  padding: 100px 0;
+  background: var(--foodie-cream-dark);
+}
+
+.story-cta-inner {
+  text-align: center;
+  max-width: 680px;
+}
+
+.story-cta-inner h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  color: var(--foodie-brown);
+  margin: 0 0 16px;
+}
+
+.story-cta-inner p {
+  color: var(--foodie-muted);
+  font-size: 1.12rem;
+  line-height: 1.8;
+  margin: 0 0 32px;
+}
+
+.story-cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.story-btn {
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.25s var(--foodie-bounce), background 0.25s ease;
+}
+
+.story-btn:hover {
+  transform: translateY(-3px);
+}
+
+.story-btn.primary {
+  background: var(--foodie-orange);
+  color: var(--foodie-white);
+}
+
+.story-btn.primary:hover {
+  background: var(--foodie-orange-dark);
+}
+
+.story-btn.secondary {
+  background: var(--foodie-brown);
+  color: var(--foodie-white);
+}
+
+.story-btn.secondary:hover {
+  background: var(--foodie-brown-light);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .origin-grid,
+  .pillars-grid,
+  .timeline-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}

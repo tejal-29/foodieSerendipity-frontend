@@ -1,0 +1,132 @@
+/* General Navbar Styles */
+.elegant-navbar {
+    background-color: rgba(214, 211, 211, 0.459);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(27, 27, 27, 0.1);
+    transition: all 0.3s ease-in-out;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    /* No horizontal padding needed here as it's handled by the container */
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+}
+
+.nav_start.scrolled .elegant-navbar {
+    background-color: rgba(121, 119, 119, 0.527);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Logo and Branding */
+.navbar-brand {
+    padding: 0;
+}
+
+.navbar_logo img {
+    height: 65px;
+    width: auto;
+}
+
+/* Nav Links */
+.nav-link {
+    color: #2c2b2b !important;
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #3f0f0f;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #4e3636 !important;
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+/* Button Styles */
+.btn-elderly {
+    background: linear-gradient(45deg, #3f0f0f, #3f1c1c);
+    color: #ffffff !important;
+    border: none;
+    padding: 0.6rem 1.6rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(106, 13, 173, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-elderly:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(106, 13, 173, 0.3);
+    background: linear-gradient(45deg, #472123, #552c2c);
+}
+
+/* Toggler Icon (for mobile) */
+.navbar-toggler {
+    border: none;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+.navbar-toggler-icon {
+    /* This line removes the default hamburger icon */
+    background-image: none;
+}
+
+.navbar-toggler-icon svg {
+    color: #491e32 !important;
+}
+
+/* Mobile & Tablet responsiveness */
+@media (max-width: 992px) {
+    .elegant-navbar {
+        background-color: #ffffff;
+        backdrop-filter: none;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-collapse {
+        margin-top: 1rem;
+        border-top: 1px solid #eee;
+    }
+    
+    .nav-item {
+        padding: 0.5rem 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav {
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+    
+    .nav-item {
+        padding-left: 0;
+    }
+    
+    .btn-elderly {
+        margin-left: 0;
+    }
+}

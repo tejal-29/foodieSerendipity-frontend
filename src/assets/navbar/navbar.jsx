@@ -59,7 +59,7 @@ const Navbar = () => {
               </li> */}
               
               <li className="nav-item">
-                <a className="btn btn-elderly" href="http://localhost:5173/cart" target="_blank" rel="noopener noreferrer" onClick={toggleNavbar}>
+                <a className="btn btn-elderly" href="https://foodieserendipity.netlify.app/cart" target="_blank" rel="noopener noreferrer" onClick={toggleNavbar}>
                   Cart
                 </a>
                 

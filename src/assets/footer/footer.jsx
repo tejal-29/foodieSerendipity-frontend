@@ -11,12 +11,18 @@ const Footer = () => {
       <div className="fs-footer-main">
         {/* Brand */}
         <div className="fs-footer-brand">
+
           <Link to="/" className="fs-footer-logo">
-            <span className="fs-logo-icon">🍽️</span>
+            <img
+              src="/logo.png"
+              alt="foodieSerendipity Cafe Logo"
+              className="fs-footer-logo-image"
+            />
             <span>
               Foodie<span className="fs-logo-highlight">Serendipity</span>
             </span>
           </Link>
+
 
           <p className="fs-footer-description">
             Good food, warm moments, and flavours worth coming back for.
